@@ -6,14 +6,17 @@ function App() {
 
   const handleAnalyze = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_query: query }),
-        mode: "cors", // Explicitly enable CORS
-      });
+      const res = await fetch(
+        "https://gemini-fastapi-server.onrender.com/analyze",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user_query: query }),
+          mode: "cors", // Explicitly enable CORS
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
