@@ -35,7 +35,7 @@ function App() {
   const handleSentimentAnalysis = async () => {
     try {
       const res = await fetch(
-        "https://gemini-fastapi-server.onrender.com/analyze_sentiment",
+        "https://gemini-fastapi-server.onrender.com/sentiment",
         {
           method: "POST",
           headers: {
