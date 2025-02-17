@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -7,17 +8,9 @@ function App() {
 
   const handleAnalyze = async () => {
     try {
-      const res = await fetch(
+      const res = await axios.post(
         "https://gemini-fastapi-server.onrender.com/analyze",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({ user_query: query }),
-          mode: "cors", // Explicitly enable CORS
-        }
+        { user_query: query } // Request body
       );
 
       if (!res.ok) {
