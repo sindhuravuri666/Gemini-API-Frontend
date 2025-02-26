@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css"; // Change theme if needed
+import { motion } from "framer-motion";
 
 import {
   Button,
@@ -95,8 +96,15 @@ function App() {
             elevation={5}
             sx={{ p: 4, textAlign: "center", borderRadius: 3 }}
           >
-            <Typography variant="h4" gutterBottom color="primary">
-              🧠 AI Text Analyzer
+            <Typography
+              variant="h3"
+              gutterBottom
+              sx={{ color: "#90caf9", fontWeight: "bold" }}
+            >
+              🚀 AI Sage
+            </Typography>
+            <Typography variant="h6" gutterBottom sx={{ color: "#f48fb1" }}>
+              "Unleash the Power of AI – Analyze, Understand, and Predict!"
             </Typography>
 
             <TextField
