@@ -131,14 +131,14 @@ function App() {
 
             {response && (
               <>
-                <Typography variant="h5" sx={{ mt: 3 }} color="secondary">
-                  📜 Formatted Response:
+                <Typography variant="h5" sx={{ mt: 3, color: "secondary" }}>
+                  📜 Response:
                 </Typography>
                 <Paper
                   sx={{
                     p: 2,
                     mt: 1,
-                    backgroundColor: "#2c2c2c",
+                    backgroundColor: "#1e1e1e",
                     borderRadius: 2,
                     textAlign: "left",
                     whiteSpace: "pre-wrap",
@@ -146,24 +146,12 @@ function App() {
                     color: "#ffffff",
                   }}
                 >
-                  <span style={{ fontWeight: "bold", color: "#f48fb1" }}>
-                    {response
-                      .replace(/Chimpanzees/g, "🦍 **Chimpanzees**")
-                      .replace(/Classification/g, "📌 **Classification:**")
-                      .replace(
-                        /Physical Characteristics/g,
-                        "🦴 **Physical Characteristics:**"
-                      )
-                      .replace(/Habitat/g, "🌍 **Habitat:**")
-                      .replace(/Diet/g, "🥗 **Diet:**")
-                      .replace(
-                        /Conservation Status/g,
-                        "⚠️ **Conservation Status:**"
-                      )
-                      .replace(/Great Apes/g, "🦧 **Great Apes:**")
-                      .replace(/Tool Use/g, "🛠️ **Tool Use:**")
-                      .replace(/Social Structure/g, "👥 **Social Structure:**")}
-                  </span>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight]}
+                  >
+                    {response}
+                  </ReactMarkdown>
                 </Paper>
               </>
             )}
