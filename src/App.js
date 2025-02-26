@@ -8,17 +8,18 @@ function App() {
 
   const handleAnalyze = async () => {
     try {
+      console.log("Starting analysis...");
       const res = await axios.post(
-        "https://gemini-fastapi-server.onrender.com/analyze",
+        "http://127.0.0.1:8000/analyze",
         { user_query: query } // Request body
       );
+      console.log("Stopping Analysis...");
 
-      if (!res.ok) {
+      if (res.status !== 200) {
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
 
-      const data = await res.json();
-      setResponse(data.ai_response);
+      setResponse(res.data.generated_text);
     } catch (error) {
       console.error("Error fetching:", error);
       setResponse("Error analyzing text.");
@@ -27,17 +28,14 @@ function App() {
 
   const handleSentimentAnalysis = async () => {
     try {
-      const res = await fetch(
-        "https://gemini-fastapi-server.onrender.com/sentiment",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: query }),
-          mode: "cors",
-        }
-      );
+      const res = await fetch("http://127.0.0.1:8000/sentiment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: query }),
+        mode: "cors",
+      });
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
