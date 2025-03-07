@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css"; // Change theme if needed
 import { motion } from "framer-motion";
+import QueryVolumeChart from "./QueryVolumeChart";
 
 import {
   Button,
@@ -191,6 +192,7 @@ function App() {
           </Paper>
         </Container>
       </Box>
+      <QueryVolumeChart />
     </ThemeProvider>
   );
 }
