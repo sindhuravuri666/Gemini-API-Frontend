@@ -109,57 +109,40 @@ const DashboardCharts = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* 🍕 Query Category Pie Chart */}
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black p-6">
-        <div className="bg-gray-900 p-6 rounded-xl shadow-lg text-white w-full md:w-2/3 lg:w-1/2 text-center">
-          {/* Title with Emoji */}
-          <h2 className="text-yellow-400 text-3xl font-bold mb-6 flex justify-center items-center">
-            🍕 Query Categories Distribution
-          </h2>
+      <div className="flex flex-col justify-center items-center min-h-screen bg-black p-10">
+        {/* Title */}
+        <h2 className="text-yellow-400 text-3xl font-bold mb-8 flex items-center">
+          🍕 Query Categories Distribution
+        </h2>
 
-          {/* Dark-themed Pie Chart */}
-          <div className="flex justify-center">
-            <PieChart width={400} height={350}>
-              <Pie
-                data={categoryData}
-                dataKey="count"
-                nameKey="category"
-                cx="50%"
-                cy="50%"
-                outerRadius={120}
-                label={({ category, percent }) =>
-                  `${category} ${(percent * 100).toFixed(1)}%`
-                }
-                labelStyle={{ fill: "#fff", fontWeight: "bold" }}
-              >
-                {categoryData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip
-                contentStyle={{ backgroundColor: "#1f2937", color: "#fff" }}
-                itemStyle={{ color: "#fff" }}
-              />
-              <Legend
-                verticalAlign="bottom"
-                height={50}
-                iconSize={20}
-                wrapperStyle={{ color: "#fff" }}
-              />
-            </PieChart>
-          </div>
-
-          {/* Description with Dark Theme */}
-          <p className="text-gray-400 text-center text-sm mt-6">
-            📊 The pie chart represents the distribution of query categories
-            based on sentiment analysis. Each slice of the chart indicates the
-            percentage of queries that fall under Positive, Negative, or Neutral
-            sentiments. The dominant color highlights the most common sentiment
-            in user queries.
-          </p>
+        {/* Centered Pie Chart */}
+        <div className="flex justify-center items-center">
+          <PieChart width={500} height={400}>
+            <Pie
+              data={categoryData}
+              dataKey="count"
+              nameKey="category"
+              cx="50%"
+              cy="50%"
+              outerRadius={140}
+              fill="#8884d8"
+              label={({ category, percent }) =>
+                `${category} ${(percent * 100).toFixed(1)}%`
+              }
+            >
+              {categoryData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip
+              contentStyle={{ backgroundColor: "#1f2937", color: "#fff" }}
+              itemStyle={{ color: "#fff" }}
+            />
+            <Legend verticalAlign="bottom" height={50} iconSize={20} />
+          </PieChart>
         </div>
       </div>
 
