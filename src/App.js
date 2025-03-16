@@ -102,7 +102,7 @@ function App() {
               gutterBottom
               sx={{ color: "#90caf9", fontWeight: "bold" }}
             >
-              🚀 AI Sage
+              Orion
             </Typography>
             <Typography variant="h6" gutterBottom sx={{ color: "#f48fb1" }}>
               "Unleash the Power of AI – Analyze, Understand, and Predict!"
